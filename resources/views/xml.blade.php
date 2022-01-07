@@ -59,6 +59,26 @@
             </tbody>
         </table>
   </div>
+  <div class="column">
+  <table class="table table-striped" style="text-align:center">
+  <h2 class="sub-header" style="text-align:center;">Izejošie zvani</h2>
+            <thead>
+                <tr>
+                    <th class="col-md-1">Kontaktpersona</th>
+                    <th class="col-md-2">Laiks</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($out_call as $ocall)
+                <tr>
+                    <th scope="row">{{ $ocall->attributes()->caller }}</th>
+                    <td>{{ $ocall->attributes()->CallTime}}</td>
+
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+  </div>
 </div>
         
         @endsection
