@@ -80,5 +80,92 @@
         </table>
   </div>
 </div>
+
+
+<h1 style = "text-align:center; padding-top:60px;">E-PASTI</h1>
+<table class="call_table" width="100%">
+			<tr>
+				<td class="subhead">Šodien ienākošie</td>
+				<td class="subhead">Šodien nepiesaistītie</td>
+				<td class="subhead">Šodien pabeigtie</td>
+				<td class="subhead">Šodien nepabeigtie</td>
+			</tr>
+            <tr>
+                <td>{{$MasterToday}}</td>
+                <td>{{$MasterTodayUnasigned}}</td>
+                <td>{{$MasterTodayDone }}</td>
+                <td>{{$MasterTodayUndone}}</td>
+            </tr>
+
+		</table>
+<div>
+  <div >
+  <h2 class="sub-header" style="text-align:center;">Šodien saņemtie, bet nepiesaistītie e-pasti({{$cUnasigned}})</h2>
+  <table class="table table-striped" style="text-align:center">
+            <thead>
+                <tr>
+                    <th class="col-md-1">Directo event kods</th>
+                    <th class="col-md-2">Klients</th>
+                    <th class="col-md-2">E-pasta temats</th>
+                    <th class="col-md-3">E-pasta saturs</th>
+                    <th class="col-md-3">Iesūtīšanas laiks</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($unasigned_events_today as $event)
+                <tr>
+                    <th scope="row">{{ $event->attributes()->Code }}</th>
+                    <td>{{ $event->attributes()->Customer}}</td>
+                    <td style="text-align:left;">{{ $event->attributes()->Subject}}</td>
+                    <td style="text-align:left;">{{ $event->attributes()->Content}}</td>
+                    <td>{{ $event->attributes()->StartDate}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+  </div>
+</div>
         
+<table class="call_table" width="100%">
+			<tr>
+				<td class="subhead">Šonedēļ ienākošie</td>
+				<td class="subhead">Šonedēļ nepiesaistītie</td>
+				<td class="subhead">Šonedēļ pabeigtie</td>
+				<td class="subhead">Šonedēļ nepabeigtie</td>
+			</tr>
+            <tr>
+                <td>{{$MasterThisWeek}}</td>
+                <td>{{$MasterThisWeekUnasigned}}</td>
+                <td>{{$MasterThisWeekDone }}</td>
+                <td>{{$MasterThisWeekUndone}}</td>
+            </tr>
+
+		</table>
+<div>
+  <div >
+  <h2 class="sub-header" style="text-align:center;">Šonedēļ saņemtie, bet nepiesaistītie e-pasti({{$cUnasigned_prev}})</h2>
+  <table class="table table-striped" style="text-align:center">
+            <thead>
+                <tr>
+                    <th class="col-md-1">Directo event kods</th>
+                    <th class="col-md-2">Klients</th>
+                    <th class="col-md-2">E-pasta temats</th>
+                    <th class="col-md-3">E-pasta saturs</th>
+                    <th class="col-md-3">Iesūtīšanas laiks</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($unasigned_events as $event)
+                <tr>
+                    <th scope="row">{{ $event->attributes()->Code }}</th>
+                    <td>{{ $event->attributes()->Customer}}</td>
+                    <td style="text-align:left;">{{ $event->attributes()->Subject}}</td>
+                    <td style="text-align:left;">{{ $event->attributes()->Content}}</td>
+                    <td>{{ $event->attributes()->StartDate}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+  </div>
+</div>
         @endsection

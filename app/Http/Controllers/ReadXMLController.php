@@ -17,6 +17,7 @@ class ReadXMLController extends Controller
 
         if(empty($z)){
         $unasigned_events = ($xml->events2->unasigned_event_prev);
+        $unasigned_events_today = ($xml->events2->unasigned_event);
         $in_call_top = ($xml->events2->in_call_top);
         $out_call = ($xml->events2->out_call);
         $missed_calls = ($xml->events2->missed_call);
@@ -65,7 +66,8 @@ class ReadXMLController extends Controller
             'mins',
             'in_call_top',
             'missed_calls',
-            'out_call'
+            'out_call',
+            'unasigned_events_today'
             ));
     }        
     public function index(){

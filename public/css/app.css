@@ -750,6 +750,10 @@ progress {
     margin-top: var(--bs-gutter-y);
 }
 
+.column {
+    border: 1px solid black;
+}
+
 .col {
     flex: 1 0 0%;
 }
@@ -11107,5 +11111,8 @@ fieldset:disabled .btn {
     text-align: center;
     font-weight: bold;
     margin-bottom: 60px;
-    border-bottom: 1px solid black;
+}
+
+.hide {
+    display:none;
 }
