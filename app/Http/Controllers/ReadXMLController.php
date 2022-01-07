@@ -17,6 +17,10 @@ class ReadXMLController extends Controller
 
         if(empty($z)){
         $unasigned_events = ($xml->events2->unasigned_event_prev);
+        $unasigned_events_today = ($xml->events2->unasigned_event);
+        $in_call_top = ($xml->events2->in_call_top);
+        $out_call = ($xml->events2->out_call);
+        $missed_calls = ($xml->events2->missed_call);
         $customer = ( $xml->events2->unasigned_event_prev['Customer'] );
         $cUnasigned = ( $xml->events2->unasigned_event->count() );
         $cUnasigned_prev = ( $xml->events2->unasigned_event_prev->count() );  
@@ -33,6 +37,8 @@ class ReadXMLController extends Controller
         $MasterThisWeekDone = ( $xml->events2->call_totals['masterTicketsThisWeekDoneDone'] );
         $MasterThisWeekUndone = ( $xml->events2->call_totals['masterTicketsThisWeekUnDone'] );
         $caller = ($xml->events2->in_call_top['caller']);
+        $total = ($xml->events2->in_call_top['total']);
+        $mins = ($xml->events2->in_call_top['mins']);
         }
         return view('xml',
             compact(
@@ -55,7 +61,13 @@ class ReadXMLController extends Controller
             'MasterThisWeekUndone',
             'caller',
             'customer',
-            'unasigned_events'
+            'unasigned_events',
+            'total',
+            'mins',
+            'in_call_top',
+            'missed_calls',
+            'out_call',
+            'unasigned_events_today'
             ));
     }        
     public function index(){
