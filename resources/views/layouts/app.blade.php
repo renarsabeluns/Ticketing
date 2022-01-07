@@ -15,7 +15,7 @@
 @include('layouts.header')
 
 
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
+<body data-new-gr-c-s-check-loaded="14.1043.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1043.0">
 @yield('content')
 </body>
 
