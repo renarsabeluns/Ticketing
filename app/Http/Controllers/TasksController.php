@@ -37,13 +37,13 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new Task;
-        $task->title = $request->input('title');
-        $task->description = $request->input('description');
-        $task->deadline = $request->input('deadline');
-        $task->save();
-
-        return redirect('/tasks');
+        $task = Task::create([
+            'title'=>$request->input('title'),
+            'description'=>$request->input('description'),
+            'deadline'=>$request->input('deadline'),
+            'user_id'=>auth()->user()->id
+        ]);
+        return redirect('/tasks')->with('message', 'Task created!');;
     }
 
     /**
@@ -65,7 +65,8 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $task = Task::find($id)->first();
+        return view('tasks.edit')->with('task',$task);
     }
 
     /**
@@ -77,7 +78,15 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::where('id',$id)
+        ->update([
+            'title'=>$request->input('title'),
+            'description'=>$request->input('description'),
+            'deadline'=>$request->input('deadline'),
+            'user_id'=>auth()->user()->id
+        ]);
+
+        return redirect('/tasks')->with('message', 'Task updated!');;
     }
 
     /**
@@ -88,6 +97,9 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id)->first();
+
+        $task->delete();
+        return redirect('/tasks');
     }
 }
