@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TicketingController;
+use App\Http\Controllers\TasksController;
 use App\Http\Controllers\ReadXMLController;
 
 #Route::get('xml',[ReadXMLController::class, 'read_xml'] function () {
@@ -24,7 +24,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 
-Route::get('/ticketing',[TicketingController::class, 'index']);Auth::routes();
+Route::resource('/tasks',TasksController::class)->middleware('auth');
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
