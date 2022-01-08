@@ -37,7 +37,13 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $task = new Task;
+        $task->title = $request->input('title');
+        $task->description = $request->input('description');
+        $task->deadline = $request->input('deadline');
+        $task->save();
+
+        return redirect('/tasks');
     }
 
     /**
