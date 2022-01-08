@@ -60,7 +60,7 @@
                     <a class="nav-link" href="{{ url('xml') }}">{{ __('Calls and Emails') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('index') }}">{{ __('Tasks') }}</a>
+                    <a class="nav-link" href="{{ url('tasks') }}">{{ __('Tasks') }}</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
