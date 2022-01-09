@@ -18,6 +18,7 @@ class TasksController extends Controller
         return view('tasks/tasks',
         ['tasks'=>$tasks]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -37,6 +38,13 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate(request(), [
+            'title' => 'required',
+            'description' => 'required',
+            'deadline' => 'required',
+
+        ]);
+
         $task = Task::create([
             'title'=>$request->input('title'),
             'description'=>$request->input('description'),
@@ -78,6 +86,13 @@ class TasksController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate(request(), [
+            'title' => 'required',
+            'description' => 'required',
+            'deadline' => 'required',
+
+        ]);
+
         $task = Task::where('id',$id)
         ->update([
             'title'=>$request->input('title'),
