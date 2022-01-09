@@ -5,7 +5,13 @@
 
 <div class="container mt-5">
     <div class="d-flex justify-content-between">
-        <div> <span class="font-weight-bold project">Tasks</span> <small class="text-black-50 totals">{{$tasks->count('id')}} Total</small> </div> <a href="tasks/create"> <button class="btn btn-primary btn-sm">New Project</button></a>
+    @if(Session::has('success'))
+    <p class="alert alert-info">{{ Session::get('success') }}</p>
+    @endif
+    @if(Session::has('message'))
+    <p class="alert alert-info">{{ Session::get('message') }}</p>
+    @endif
+        <div> <span class="font-weight-bold project">Tasks</span> <small class="text-black-50 totals">{{$tasks->count('id')}} Total</small> </div> <a href="tasks/create"> <button class="btn btn-primary btn-sm">New Task</button></a>
     </div>
     <div class="bg-white border rounded mt-2">
       

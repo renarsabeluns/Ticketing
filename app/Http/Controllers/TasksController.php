@@ -51,7 +51,7 @@ class TasksController extends Controller
             'deadline'=>$request->input('deadline'),
             'user_id'=>auth()->user()->id
         ]);
-        return redirect('/tasks')->with('message', 'Task created!');;
+        return redirect('/tasks')->with('success', 'Task created!');
     }
 
     /**
@@ -101,7 +101,7 @@ class TasksController extends Controller
             'user_id'=>auth()->user()->id
         ]);
 
-        return redirect('/tasks')->with('message', 'Task updated!');;
+        return redirect('/tasks')->with('success', 'Task updated!');;
     }
 
     /**
