@@ -55,12 +55,21 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+
+
+
+
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
+                    @auth
                     <a class="nav-link" href="{{ url('xml') }}">{{ __('Calls and Emails') }}</a>
+                    @endauth
                 </li>
                 <li class="nav-item">
+                @auth
                     <a class="nav-link" href="{{ url('tasks') }}">{{ __('Tasks') }}</a>
+                    @endauth
                 </li>
             </ul>
             <ul class="navbar-nav">

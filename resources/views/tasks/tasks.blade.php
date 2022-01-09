@@ -10,9 +10,10 @@
     <div class="bg-white border rounded mt-2">
       
     <div class="row mb-5">
-        @foreach($tasks as $task)
+        @foreach($tasks as $task)         
+        @if (isset(Auth::user()->id) && Auth::user()->id == $task -> user_id )
         <div class="col-md-6 mt-3">
-            @if (isset(Auth::user()->id) && Auth::user()->id == $task -> user_id )
+
             <div class="bg-white p-3 rounded border">
                     <h6>{{$task->title}} #{{$task->id}}</h6>
                     <p class="text-black-50 content mb-5">{{$task->description}}</p>
@@ -31,8 +32,9 @@
                     </div>
 
             </div>
-            @endif
+            
         </div>
+        @endif
         @endforeach
     </div>
 </div>
