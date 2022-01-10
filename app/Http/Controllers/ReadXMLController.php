@@ -42,8 +42,29 @@ class ReadXMLController extends Controller
             $total = isset(($xml->events2->in_call_top['total'])) ? ($xml->events2->in_call_top['total']) : 0;
             $mins = isset(($xml->events2->in_call_top['mins'])) ? ($xml->events2->in_call_top['mins']) : 0;
         } else {
-            session()->flash('error', 'You do not have permission');
-            return redirect()->back();
+            $unasigned_events = ($xml->events2->unasigned_event_prev);
+            $unasigned_events_today = ($xml->events2->unasigned_event);
+            $in_call_top = ($xml->events2->in_call_top);
+            $out_call = ($xml->events2->out_call);
+            $missed_calls = ($xml->events2->missed_call);
+            $customer = isset(($xml->events2->unasigned_event_prev['Customer'])) ? ($xml->events2->unasigned_event_prev['Customer']) : 0;
+            $cUnasigned = null !== (($xml->events2->unasigned_event->count())) ? ($xml->events2->unasigned_event->count()) : 0;
+            $cUnasigned_prev = ($xml->events2->unasigned_event_prev->count());
+            $incall = isset(($xml->events2->call_totals['incall'])) ? ($xml->events2->call_totals['incall']) : 0;
+            $outcall = isset(($xml->events2->call_totals['outcall'])) ? ($xml->events2->call_totals['outcall']) : 0;
+            $missedIn = isset(($xml->events2->call_totals['missedIn'])) ? ($xml->events2->call_totals['missedIn']) : 0;
+            $missedOut = isset(($xml->events2->call_totals['missedOut'])) ? ($xml->events2->call_totals['missedOut']) : 0;
+            $MasterToday = isset(($xml->events2->call_totals['masterTicketsToday'])) ? ($xml->events2->call_totals['masterTicketsToday']) : 0;
+            $MasterTodayUnasigned = isset(($xml->events2->call_totals['masterTicketsTodayUnasigned'])) ? ($xml->events2->call_totals['masterTicketsTodayUnasigned']) : 0;
+            $MasterTodayDone = isset(($xml->events2->call_totals['masterTicketsTodayDone'])) ? ($xml->events2->call_totals['masterTicketsTodayDone']) : 0;
+            $MasterTodayUndone = isset(($xml->events2->call_totals['masterTicketsTodayUnDone'])) ? ($xml->events2->call_totals['masterTicketsTodayUnDone']) : 0;
+            $MasterThisWeek = isset(($xml->events2->call_totals['masterTicketsThisWeek'])) ? ($xml->events2->call_totals['masterTicketsThisWeek']) : 0;
+            $MasterThisWeekUnasigned = isset(($xml->events2->call_totals['masterTicketsThisWeekUnasigned'])) ? ($xml->events2->call_totals['masterTicketsThisWeekUnasigned']) : 0;
+            $MasterThisWeekDone = isset(($xml->events2->call_totals['masterTicketsThisWeekDoneDone'])) ? ($xml->events2->call_totals['masterTicketsThisWeekDoneDone']) : 0;
+            $MasterThisWeekUndone = isset(($xml->events2->call_totals['masterTicketsThisWeekUnDone'])) ? ($xml->events2->call_totals['masterTicketsThisWeekUnDone']) : 0;
+            $caller = isset(($xml->events2->in_call_top['caller'])) ? ($xml->events2->in_call_top['caller']) : 'none';
+            $total = isset(($xml->events2->in_call_top['total'])) ? ($xml->events2->in_call_top['total']) : 0;
+            $mins = isset(($xml->events2->in_call_top['mins'])) ? ($xml->events2->in_call_top['mins']) : 0;
         }
         return view(
             'xml',

@@ -6,6 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <div class="card-header">{{ __('Edit Profile') }}</div>
                 @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -18,16 +19,17 @@
                     @csrf
                     @method('PUT')
                     <label for="name">
-                        <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
+                        <span> Your name:<input type="text" class="form-control" name="name" id="name" value="{{$user->name}}"> </span>
                     </label>
                     <label for="email">
-                        <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
+                        <span> Your email: <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}"></span>
                     </label>
                     <button type="submit" class="btn btn-success">Update Profile</button>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 @endsection
