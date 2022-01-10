@@ -71,6 +71,13 @@
                     <a class="nav-link" href="{{ url('tasks') }}">{{ __('Tasks') }}</a>
                     @endauth
                 </li>
+                <li class="nav-item">
+                @auth
+                @if (auth()->user()->isAdmin())
+                    <a class="nav-link" href="{{route('users.index')}}">{{ __('Users') }}</a>
+                    @endif
+                    @endauth
+                </li>
             </ul>
             <ul class="navbar-nav">
                 @guest
@@ -83,8 +90,12 @@
                 </li>
                 @endif
                 @else
+
                 <li class="nav-item">
                 <a class="nav-link">Hi,{{ Auth::user()->name }}!</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ route('users.edit-profile') }}">My profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"  onclick="event.preventDefault();
