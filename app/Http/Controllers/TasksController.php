@@ -39,8 +39,8 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'title' => 'required',
-            'description' => 'required',
+            'title' => ['required', 'string', 'max:70'],
+            'description' => ['required', 'string', 'max:1000'],
             'deadline' => 'required',
 
         ]);
@@ -87,12 +87,12 @@ class TasksController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate(request(), [
-            'title' => 'required',
-            'description' => 'required',
+            'title' => ['required', 'string', 'max:70'],
+            'description' => ['required', 'string', 'max:1000'],
             'deadline' => 'required',
 
         ]);
-
+        
         $task = Task::where('id',$id)
         ->update([
             'title'=>$request->input('title'),
@@ -101,7 +101,7 @@ class TasksController extends Controller
             'user_id'=>auth()->user()->id
         ]);
 
-        return redirect('/tasks')->with('success', 'Task updated!');;
+        return redirect('/tasks')->with('success', 'Task updated!');
     }
 
     /**
@@ -115,6 +115,6 @@ class TasksController extends Controller
         $task = Task::find($id)->first();
 
         $task->delete();
-        return redirect('/tasks');
+        return redirect('/tasks')->with('success', 'Task deleted!');
     }
 }

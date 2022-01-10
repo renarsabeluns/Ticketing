@@ -5,17 +5,19 @@
 
 <div class="container mt-5">
     <div class="d-flex justify-content-between">
-    @if(Session::has('success'))
-    <p class="alert alert-info">{{ Session::get('success') }}</p>
-    @endif
-    @if(Session::has('message'))
-    <p class="alert alert-info">{{ Session::get('message') }}</p>
-    @endif
-        <div> <span class="font-weight-bold project">Tasks</span> <small class="text-black-50 totals">{{$tasks->count('id')}} Total</small> </div> <a href="tasks/create"> <button class="btn btn-primary btn-sm">New Task</button></a>
+        <div> 
+            <span class="font-weight-bold project">Tasks</span> 
+         </div> 
+         <!--Alert for when an action has succesfully been completed-->
+         @if(Session::has('success'))
+            <p class="alert alert-info">{{ Session::get('success') }}</p>
+         @endif
+         <a href="tasks/create"> <button class="btn btn-primary btn-sm">New Task</button></a>
     </div>
     <div class="bg-white border rounded mt-2">
       
     <div class="row mb-5">
+        
         @foreach($tasks as $task)         
         @if (isset(Auth::user()->id) && Auth::user()->id == $task -> user_id )
         <div class="col-md-6 mt-3">

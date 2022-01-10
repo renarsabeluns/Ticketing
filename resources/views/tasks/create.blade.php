@@ -9,6 +9,15 @@
     <form action='/tasks'method="POST">
         @csrf
         <h1>Create a task</h1>
+        @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div><br />
+@endif
     <div class="form-group" >
       <label for="title">Title</label>
       <input class="form-control" id="name" type="text" name="title" required>
